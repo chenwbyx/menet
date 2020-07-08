@@ -9,6 +9,6 @@
 ### Installation
 
 ```shell
-go get github.com/patrickmn/go-cache
+go get github.com/chenwbyx/menet
 ```
 
