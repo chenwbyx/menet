@@ -25,15 +25,12 @@ jobs:
 
       - name: Vet
         run: go vet ./...
-        continue-on-error: true
 
       - name: Build
         run: go build ./...
-        continue-on-error: true
 
       - name: Test
         run: go test -v -count=1 -short ./...
-        continue-on-error: true
 
   lint:
     name: Lint

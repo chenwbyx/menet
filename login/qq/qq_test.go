@@ -23,7 +23,7 @@ func TestLoginQQ(t *testing.T) {
 	login.NewLogin(cfg)
 	resp := login.CheckResp{}
 	login.Validate(&login.CheckReq{
-		"qq", "123", "asfsdf", nil, "1.0.0", ""}, &resp)
+		Domain: "qq", Uin: "123", Ticket: "asfsdf", App_data: "1.0.0"}, &resp)
 	if resp.Error != login.INVALID_TOKEN {
 		t.Error("assert result is FAILED")
 	}

@@ -1,3 +1,5 @@
+//go:build ignore
+
 //go:generate proto_handle_gen
 package handle
 

@@ -21,7 +21,7 @@ func main() {
 	}
 	pos := bytes.IndexByte(data, byte(' '))
 	if pos == -1 {
-		panic(errors.New("pos != -1 " + string(pos)))
+		panic(errors.New("space separator not found in input"))
 	}
 	name := string(data[:pos])
 	persistData := data[pos+1:]

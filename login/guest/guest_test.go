@@ -13,12 +13,12 @@ func TestLoginGuest(t *testing.T) {
 	login.NewLogin(cfg)
 	resp := login.CheckResp{}
 	login.Validate(&login.CheckReq{
-		"guest", "", "", nil, "", ""}, &resp)
+		Domain: "guest"}, &resp)
 	if resp.Error != login.FAILED {
 		t.Error("assert result is FAILED")
 	}
 	login.Validate(&login.CheckReq{
-		"guest", "ergou", "", nil, "", ""}, &resp)
+		Domain: "guest", Uin: "ergou"}, &resp)
 	if resp.Error != login.SUCCESS {
 		t.Error("assert result is SUCCESS")
 	}

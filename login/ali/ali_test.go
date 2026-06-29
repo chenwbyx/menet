@@ -1,3 +1,5 @@
+//go:build integration
+
 package ali_test
 
 import (
@@ -23,12 +25,12 @@ func TestLoginAli(t *testing.T) {
 	login.NewLogin(cfg)
 	resp := login.CheckResp{}
 	login.Validate(&login.CheckReq{
-		"aliali", "", "7788123", nil, "", ""}, &resp)
+		Domain: "aliali", Ticket: "7788123"}, &resp)
 	if resp.Error != login.INVALID_DOMAIN {
 		t.Error("assert result is INVALID_DOMAIN")
 	}
 	login.Validate(&login.CheckReq{
-		"ali", "", "7788123", nil, "", ""}, &resp)
+		Domain: "ali", Ticket: "7788123"}, &resp)
 	if resp.Error != login.FAILED {
 		t.Error("assert result is FAILED")
 	}
