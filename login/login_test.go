@@ -23,7 +23,7 @@ func TestLogin(t *testing.T) {
 	login.NewLogin(cfg)
 	resp := login.CheckResp{}
 	login.Validate(&login.CheckReq{
-		"wei", "101", "7788123", "", "", ""}, &resp)
+		"wei", "101", "7788123", nil, "", ""}, &resp)
 	if resp.Error != login.INVALID_DOMAIN {
 		t.Error("what?")
 	}

@@ -1,7 +1,7 @@
 package util
 
 import (
-	"fmt"
+	"log"
 	"github.com/fatih/structtag"
 	"go/ast"
 	"strconv"
@@ -15,7 +15,7 @@ func GetFieldTag(field *ast.Field, key string) *structtag.Tag {
 	s, _ := strconv.Unquote(field.Tag.Value)
 	tags, err := structtag.Parse(s)
 	if err != nil {
-		fmt.Errorf("parse tag string:%s failed:%v", field.Tag.Value, err)
+		log.Printf("parse tag string:%s failed:%v", field.Tag.Value, err)
 		return &structtag.Tag{}
 	}
 	tag, err := tags.Get(key)
@@ -34,7 +34,7 @@ func GetFieldTags(field *ast.Field) *structtag.Tags {
 	s, _ := strconv.Unquote(field.Tag.Value)
 	tags, err := structtag.Parse(s)
 	if err != nil {
-		fmt.Errorf("parse tag string:%s failed:%v", field.Tag.Value, err)
+		log.Printf("parse tag string:%s failed:%v", field.Tag.Value, err)
 		return &structtag.Tags{}
 	}
 	return tags
@@ -178,7 +178,7 @@ func getFiledCopyRecursion(deep int, filedName string, fieldType interface{}) (b
 func GetFiledDeepCopyString(field *ast.Field) (block string) {
 	fieldName := GetFieldName(field)
 	fieldType := getFiledTypeRecursion(field.Type)
-	fmt.Println("@@@@@@@@dst = src@@@@@@@@@", fieldType)
+	log.Println("@@@@@@@@dst = src@@@@@@@@@", fieldType)
 	block += `
     dst.` + fieldName + " = make(" + fieldType + ")"
 

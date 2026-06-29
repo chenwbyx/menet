@@ -16,19 +16,19 @@ func TestLoginZhiqu(t *testing.T) {
 	login.NewLogin(cfg)
 	resp := login.CheckResp{}
 	login.Validate(&login.CheckReq{
-		"zhiqu123", "101", "7788123", "", "", ""}, &resp)
+		"zhiqu123", "101", "7788123", nil, "", ""}, &resp)
 	if resp.Error != login.INVALID_DOMAIN {
 		t.Error("assert result is INVALID_DOMAIN")
 	}
 
 	login.Validate(&login.CheckReq{
-		"zhiqu", "101", "7788123", "", "", ""}, &resp)
+		"zhiqu", "101", "7788123", nil, "", ""}, &resp)
 	if resp.Error != login.INVALID_TOKEN {
 		t.Error("assert result is INVALID_TOKEN")
 	}
 
 	login.Validate(&login.CheckReq{
-		"zhiqu", "", "", "7788123", "", ""}, &resp)
+		"zhiqu", "", "", nil, "7788123", ""}, &resp)
 	if resp.Error != login.FAILED {
 		t.Error("assert result is FAILED")
 	}

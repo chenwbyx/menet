@@ -23,12 +23,12 @@ func TestLoginWeiXin(t *testing.T) {
 	login.NewLogin(cfg)
 	resp := login.CheckResp{}
 	login.Validate(&login.CheckReq{
-		"weixin", "101", "7788123", "", "", ""}, &resp)
+		"weixin", "101", "7788123", nil, "", ""}, &resp)
 	if resp.Error != login.INVALID_DOMAIN {
 		t.Error("assert result is INVALID_DOMAIN")
 	}
 	login.Validate(&login.CheckReq{
-		"weixin", "", "", "7788123", "", ""}, &resp)
+		"weixin", "", "", nil, "7788123", ""}, &resp)
 	if resp.Error != login.FAILED {
 		t.Error("assert result is FAILED")
 	}
